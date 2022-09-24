@@ -48,4 +48,9 @@ public class StudentController {
         service.updateStudent(existingUser);
         return "redirect:/";
     }
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    public String deleteStudent(@PathVariable Long id){
+        service.deleteStudent(id);
+        return"redirect:/";
+    }
 }
