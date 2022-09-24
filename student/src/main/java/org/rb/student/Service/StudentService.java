@@ -18,4 +18,10 @@ public class StudentService {
     public  Student saveStudent(Student student){
         return repo.save(student);
     }
+    public Student editStudent(Long id){
+        return repo.findById(id).get();
+    }
+    public  Student updateStudent(Student student){
+        return repo.save(student);
+    }
 }

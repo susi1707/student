@@ -55,7 +55,10 @@
             <td th:text="${student.firstName}"></td>
             <td th:text="${student.lastName}"></td>
             <td th:text="${student.email}"></td>
-
+            <td>
+                <a th:href="@{/edit/{id}(id=${student.id})}"
+                class="btn btn-warning">Edit</a>
+            </td>
         </tr>
         </tbody>
     </table>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,6 +31,21 @@ public class StudentController {
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String save(@ModelAttribute("student") Student student){
         service.saveStudent(student);
+        return "redirect:/";
+    }
+    @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
+    public String editStudent(@PathVariable Long id, Model model){
+        model.addAttribute("editstudent",service.editStudent(id));
+    return "editstudent";
+    }
+    @RequestMapping(value = "{id}",method = RequestMethod.POST)
+    public String updateStudent(@PathVariable Long id,@ModelAttribute("student") Student student){
+        Student existingUser = service.editStudent(id);
+
+        existingUser.setFirstName(student.getFirstName());
+        existingUser.setLastName(student.getLastName());
+        existingUser.setEmail(student.getEmail());
+        service.updateStudent(existingUser);
         return "redirect:/";
     }
 }
