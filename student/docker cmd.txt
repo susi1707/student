@@ -1,0 +1,5 @@
+docker build -t student:1.0 .
+docker network create app-network
+docker network connect app-network rbDB
+change the db url in application rbDB
+docker run --name student -d -p 8080:8080 --network=app-network student:1.0

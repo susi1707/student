@@ -17,7 +17,7 @@ public class StudentController {
     private StudentService service;
 
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "/student",method = RequestMethod.GET)
     public String listStudent(Model model){
         model.addAttribute("list_student",service.getAllStudent());
         return "student";
@@ -31,7 +31,7 @@ public class StudentController {
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String save(@ModelAttribute("student") Student student){
         service.saveStudent(student);
-        return "redirect:/";
+        return "redirect:/student";
     }
     @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
     public String editStudent(@PathVariable Long id, Model model){
@@ -46,11 +46,11 @@ public class StudentController {
         existingUser.setLastName(student.getLastName());
         existingUser.setEmail(student.getEmail());
         service.updateStudent(existingUser);
-        return "redirect:/";
+        return "redirect:/student";
     }
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public String deleteStudent(@PathVariable Long id){
         service.deleteStudent(id);
-        return"redirect:/";
+        return"redirect:/student";
     }
 }
