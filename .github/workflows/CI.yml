@@ -37,6 +37,6 @@ jobs:
       with:
         image: razorblack1707/project1
         registry: docker.io
-        tag: latest
+        tags: latest
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
