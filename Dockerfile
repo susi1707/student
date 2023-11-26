@@ -1,4 +1,5 @@
 FROM openjdk:17
-ADD student/build/libs/student.jar student.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/student.jar"]
+COPY ./build/libs/student-1.0-SNAPSHOT.jar /usr/app/
+WORKDIR /usr/app
+ENTRYPOINT ["java", "-jar", "student-1.0-SNAPSHOT.jar"]
