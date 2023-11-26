@@ -25,14 +25,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
        
-    - name: init with Gradle
-      uses: gradle/gradle-build-action@v2
-    - run: gradle init
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@v2
+      uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
       with:
-        gradle-version: 7.5.1
-        arguments: build
+        arguments: build  
+        gradle-version: 7.5.1  
 
     - name: Build and push Docker image 
       uses: mr-smithers-excellent/docker-build-push@v6
