@@ -1,0 +1,16 @@
+version: "3"
+services:
+  rbDB:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DATABASE=postgres
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rbDB
+
